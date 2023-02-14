@@ -1,0 +1,32 @@
+extends default.pug 
+
+block content
+  // De to øverste linjene(Kommentarer kan bare være under block content): 
+  // Denne bruker default som header  (logo osv) som i alle andre templates
+  // dette betyr at resten av malen kommer under
+
+  // Skriver ut navigasjon slik at du lett kan gå tilbake på siden du kom fra 
+  h3 <a href="/items"> Products </a> > <a href=""> #{product.title} </a>  
+ 
+  // Skriver ut tittel 
+  h1= product.title
+  // Skriver ut en stjerne for hvert "review-poeng" produktet har fått (rundet opp eller ned)
+  <p>
+    -for (var i = 0; i < Math.round(product.rating); ++i) {
+        <img src="/star.png" width="20em">
+    -}
+    //Skriver ut poengscore i vanlige tall 
+    #{product.rating.toString()} 
+  </p>
+
+  // produktdetaljer 
+  <p class="details">pris: #{product.price} ,- </p>
+  <p class="details">Antall på lager: #{product.stock} </p>
+  <p class="details">Rabatt: #{product.discountPercentage} %</p>
+  
+  //Produkt desccription skrives ut  
+  h4= product.description
+
+  // pug-måten å lage en loop på. Løper gjennom bildelista og skriver ut alle bildene
+  each img in product.images
+    <img src="#{img}" alt="product photo">

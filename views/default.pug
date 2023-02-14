@@ -1,0 +1,49 @@
+html
+    head
+      // Denne malen brukes som "header" i alle malene. 
+
+      // Script som brukes i nettleser (ikke serverside)
+      script(type='text/javascript').
+
+        // Kalles nå bruker trykker på "oppdater" eller enter-knappen
+        // bygger opp en url med forskjellige filter som brukeren har valgt
+        // Dette hentes fra felter på nettsiden med document.getElement osv. 
+        function search(){
+          let searchURL = "items?s="+document.getElementById("searchstring").value
+          searchURL = searchURL + "&limit=" + document.getElementById("limit").value
+          searchURL = searchURL + "&sortOrder=" + document.getElementById("sortOrder").value
+          // Når url er bygget opp av input fra brukeren navigerer vi til den nye urlen
+          window.location.href=searchURL
+        }
+
+        // Henter ut parameter "S" fra navigasjonsfeltet sin url (i browser) 
+        // og setter søkefeltet til verdien av av dette
+        // På denne måten vises det brukeren har søkt på som default-bverdi i søkefeltet
+        function preFillSearch(){
+          const urlParams = new URLSearchParams(window.location.search);
+          document.getElementById("searchstring").value = urlParams.get("s");
+        }
+        
+        // legger til en lytter for enter, slik at bruker kan "trykke på knappen" ved å 
+        // trykke enter
+        document.addEventListener('keydown', function(event){
+          if (event.code == "Enter") {
+            console.log("tryket på enter")
+            console.log("event code: " + event.code)
+            search()
+        }});
+        
+      // headerinformasjon. Jeg bruker google fonts
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      meta(http-equiv='X-UA-Compatible' content='ie=edge')
+      title= title
+      link(rel='stylesheet' type="text/css" href='/css/stylesheet.css')
+      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:wght@200&display=swap')
+    
+    // kaller funksjonen som fyller ut det brukeren sist søkte på (se over)
+    body(onload="preFillSearch()")
+      <div class="header" width="90%"><img src="/logo.png" height="40%"></div>
+
+block content
+

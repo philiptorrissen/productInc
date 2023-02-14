@@ -1,0 +1,34 @@
+extends default.pug 
+    
+block content
+    // De to øverste linjene(Kommentarer kan bare være under block content): 
+    // Denne bruker default som header  (logo osv) som i alle andre templates
+    // dette betyr at resten av malen kommer under
+
+    // enkel HTML som beskriver hva jeg har gjort
+    <h1>Oppgave Infotek</h1>
+    <p>I denne oppgaven har jeg lagd en side som henter produkter fra <a href="http://dummyjson.com">dummyjson.com</a>. Denne tjenesten leverer 100 produkter i en json-array over http. Jeg har brukt følgende for å presentere disse på en nettside: 
+        <ul>
+            <li><a href="https://nodejs.org/en/">Node.js</a> er et rammeverk som lar deg kjøre javascript på serveren.
+            <li><a href="https://expressjs.com/">Express</a> er et webrammeverk for node.js. Det hjelper deg blant annet med å lage ruter til sider.
+            <li><a href="https://pugjs.org/api/getting-started.html">Pug</a> er et templateverktøy som gjør at man slipper å skrive så mye html i javascript
+        </ul>
+    </p> 
+    <p>
+        <h2>Dette har jeg laget</h2> Jeg har laget fem sider. 
+        <ul>
+            <li><a href="/">Startsiden</a> som du leser nå. Her forklarer jeg hva jeg har laget og hvordan jeg har laget det.
+            <li><a href="/ping">Ping</a> er en side som viser at serveren er oppe og gjør dette ved å svare "pong!".
+            <li><a href="/items">Items</a> viser alle produktene og lar deg søke, sortere og bestemme antall du vil se. I tilegg kan du navigere til en side som viser detaljert produktinformasjon.
+            <li><a href="/items/1">Detaljsiden</a> viser detaljer om et produkt i tilegg til flere bilder.
+            <li><a href="dette/er/en/url/som/ikke/finnes">Feilside</a> som vises hvis du prøver å gå til en side som ikke finnes, eller en annen feil oppstår.
+        </ul>
+    </p>
+    <p>
+        <h2>Forbedringer</h2> 
+        <ul>
+            <li> Lage slik at limit vises pr side. Det er hundre produkter, så hvis brukeren velger limit 10, kan man vise 10 sider med 10 produkter. dummyjson lar deg hente produkter fra-til, for eksempel fra produkt 10 til produkt 20, så dette er ganske enkelt å få til. 
+            <li> Bedre feilhåndtering (f.eks hvis man ikke når dummyjson)
+            <li> Pre-velge det brukeren valgte sist fra "dropdown"-menyene (limit, sortOrder). Slik som for søk. 
+        </ul>
+    </p>

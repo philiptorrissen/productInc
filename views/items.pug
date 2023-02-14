@@ -1,0 +1,53 @@
+extends default.pug 
+
+block content 
+  // De to øverste linjene(Kommentarer kan bare være under block content): 
+  // Denne bruker default som header  (logo osv) som i alle andre templates
+  // dette betyr at resten av malen kommer under
+
+  <div class="searchbox">
+    
+    // input felt som brukeren kan søke i  
+    <input id="searchstring" type="text">
+
+    // en dropdown hvor brukeren kan velge forskjellige sorterings-rekkefølger 
+    <select id="sortOrder">
+      <option value="1">price asc</option>
+      <option value="2">price des</option>
+      <option value="3">name a-z</option>
+      <option value="4">name z-a</option>
+    </select>
+
+    // en dropdown der brukeren kan velge hvor mange produkter som vises
+    <select id="limit">
+      <option value="10">10</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+    </select>
+
+    // en knapp for å oppdatere siden med "filter"
+    <button id="button" onclick="search()">Oppdater</button>
+  </div>
+
+  // et felt som viser hva brukeren har søkt på  (Sendes inn fra items.js)
+  <div class="searchbox">
+    h2= searchString
+  </div>
+  
+  // tabellvisning av alle produktene 
+  table(width='100%', cellspacing='0', cellpadding='0', border='0', bgcolor='#F2F2F2')
+    thead
+      tr
+        th Name
+        th Description
+        th Price
+        th More info    
+    tbody
+      // pug-måten å loope gjennom alle produktene på. Disse sendes som parameter til malen 
+      // i items.js 
+      each product in products
+        tr
+          td #{product.title} <p><img src="#{product.images[0]}" width= 100px></p>
+          td #{product.description}
+          td #{product.price},-
+          td <a href=items/#{product.id}>Details</a>

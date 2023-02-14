@@ -1,0 +1,13 @@
+extends default.pug 
+
+block content 
+    // De to øverste linjene(Kommentarer kan bare være under block content): 
+    // Denne bruker default som header  (logo osv) som i alle andre templates
+    // dette betyr at resten av malen kommer under
+    
+    // Viser en feilmelding og et bilde. I tillegg vises en lenke til produktsiden
+    <div class="error">
+        <img src="/tekniskfeil.png" alt="Teknisk feil">
+        h1= message 
+        h2 Trykk <a href="/items">her</a> for å se vårt vareutvalg. 
+        
